@@ -1,0 +1,25 @@
+import { useEffect, useState } from "react";
+import { getCategories } from "../services/categoryService";
+
+const useCategories = () => {
+  const [categories, setCategories] = useState([]);
+
+  const fetchCategories = async () => {
+    try {
+      const data = await getCategories();
+      setCategories(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  return {
+    categories,
+  };
+};
+
+export default useCategories;
