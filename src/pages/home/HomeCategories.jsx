@@ -32,7 +32,7 @@ const HomeCategories = () => {
               );
             })}
           </div>
-          <div className="w-full md:w-1/3">
+          <div className="w-full md:w-1/3 flex flex-col items-center text-center md:items-start md:text-left">
             {category && (
               <>
                 <img
