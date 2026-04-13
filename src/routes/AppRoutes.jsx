@@ -4,6 +4,7 @@ import HomePage from "../pages/home/HomePage";
 import CategoryPage from "../pages/category/CategoryPage";
 import ProductPage from "../pages/product/ProductPage";
 import ProductDetailPage from "../pages/product/ProductDetailPage";
+import LoginPage from "../pages/admin/LoginPage";
 
 const AppRoutes = () => {
   return (
@@ -17,6 +18,8 @@ const AppRoutes = () => {
         />
         <Route path="/products/:productId" element={<ProductDetailPage />} />
       </Route>
+
+      <Route path="/admin/login" element={<LoginPage />} />
     </Routes>
   );
 };
