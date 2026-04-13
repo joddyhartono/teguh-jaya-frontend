@@ -1,13 +1,25 @@
 import { Link } from "react-router";
 import logo from "../../assets/teguhjayalogo.png";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const { items } = useSelector((state) => {
     return state.category;
   });
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="border-b">
@@ -18,7 +30,7 @@ const Navbar = () => {
         <div className="flex items-center gap-8">
           <Link to="/">Home</Link>
 
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="cursor-pointer"
@@ -32,6 +44,7 @@ const Navbar = () => {
                     key={item.id}
                     to={`/categories/${item.id}/products`}
                     className="block py-1"
+                    onClick={() => setIsOpen(!isOpen)}
                   >
                     {item.name}
                   </Link>
