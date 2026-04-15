@@ -12,7 +12,7 @@ const PRODUCTS_ENDPOINTS = {
 };
 
 const AUTH_ENDPOINTS = {
-  LOGIN: "/login",
+  LOGIN: "/auth/login",
 };
 
 export { CATEGORIES_ENDPOINTS, PRODUCTS_ENDPOINTS, AUTH_ENDPOINTS };
