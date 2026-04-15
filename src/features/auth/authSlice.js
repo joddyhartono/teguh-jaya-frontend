@@ -17,6 +17,7 @@ const authSlice = createSlice({
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.loading = "succeeded";
       state.token = action.payload.token;
+      localStorage.setItem("token", action.payload.token);
     });
     builder.addCase(loginUser.rejected, (state, action) => {
       state.loading = "failed";
