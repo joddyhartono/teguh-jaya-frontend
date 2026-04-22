@@ -8,8 +8,8 @@ const useCategories = () => {
     try {
       const data = await getCategories();
       setCategories(data);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 

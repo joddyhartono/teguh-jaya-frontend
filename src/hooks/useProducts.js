@@ -8,8 +8,8 @@ const useProducts = (categoryId) => {
     try {
       const data = await getProductsByCategory(categoryId);
       setProducts(data);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 

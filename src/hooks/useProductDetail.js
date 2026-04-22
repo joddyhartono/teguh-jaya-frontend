@@ -8,8 +8,8 @@ const useProductDetail = (productId) => {
     try {
       const data = await getProduct(productId);
       setProduct(data);
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 
