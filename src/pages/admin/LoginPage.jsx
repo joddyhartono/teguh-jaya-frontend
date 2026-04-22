@@ -1,21 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Input from "../../components/input/Input";
 import Button from "../../components/buttons/Button";
 import { loginUser } from "../../features/auth/authThunk";
+import { useNavigate } from "react-router";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({ username: "", password: "" });
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    dispatch(loginUser(formData));
+    try {
+      await dispatch(loginUser(formData)).unwrap();
+      navigate("/admin/dashboard");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
