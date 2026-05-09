@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCategories } from "../services/categoryService";
 
-const useCategories = () => {
+const useCategoryList = () => {
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = async () => {
@@ -19,7 +19,8 @@ const useCategories = () => {
 
   return {
     categories,
+    fetchCategories,
   };
 };
 
-export default useCategories;
+export default useCategoryList;

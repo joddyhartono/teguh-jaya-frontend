@@ -1,5 +1,8 @@
 const CATEGORIES_ENDPOINTS = {
   CATEGORIES: "/categories",
+  CATEGORY: (categoryId) => {
+    return `/categories/${categoryId}`;
+  },
 };
 
 const PRODUCTS_ENDPOINTS = {
@@ -15,4 +18,13 @@ const AUTH_ENDPOINTS = {
   LOGIN: "/auth/login",
 };
 
-export { CATEGORIES_ENDPOINTS, PRODUCTS_ENDPOINTS, AUTH_ENDPOINTS };
+const DASHBOARD_ENDPOINTS = {
+  STATS: "/dashboard/stats",
+};
+
+export {
+  CATEGORIES_ENDPOINTS,
+  PRODUCTS_ENDPOINTS,
+  AUTH_ENDPOINTS,
+  DASHBOARD_ENDPOINTS,
+};

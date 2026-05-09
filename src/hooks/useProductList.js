@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProductsByCategory } from "../services/productService";
 
-const useProducts = (categoryId) => {
+const useProductList = (categoryId) => {
   const [products, setProducts] = useState([]);
 
   const fetchProducts = async () => {
@@ -19,7 +19,8 @@ const useProducts = (categoryId) => {
 
   return {
     products,
+    fetchProducts,
   };
 };
 
-export default useProducts;
+export default useProductList;
