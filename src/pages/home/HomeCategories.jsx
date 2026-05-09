@@ -1,9 +1,9 @@
-import useCategories from "../../hooks/useCategories";
+import useCategoryList from "../../hooks/useCategoryList";
 import { useState } from "react";
 import drink from "../../assets/drink.png";
 
 const HomeCategories = () => {
-  const { categories } = useCategories();
+  const { categories } = useCategoryList();
   const [category, setCategory] = useState(null);
 
   return (
@@ -12,7 +12,7 @@ const HomeCategories = () => {
         <h1 className="text-3xl md:text-4xl font-bold leading-tight">
           Kategori
         </h1>
-        <h2 className="mt-3 md:mt-4 text-gray-600">Koleksi Kami</h2>
+        <h2 className="mt-3 md:mt-4">Koleksi Kami</h2>
       </div>
 
       {categories && (
@@ -42,9 +42,7 @@ const HomeCategories = () => {
                 />
                 {/* <img src={decode(category.imageBase64)} alt={category.name} className="w-full h-32 object-contain mb-3"/> */}
                 <h2 className="font-semibold">{category.name}</h2>
-                <p className="text-sm text-gray-500 mt-1">
-                  {category.description}
-                </p>
+                <p className="text-sm mt-1">{category.description}</p>
               </>
             )}
           </div>

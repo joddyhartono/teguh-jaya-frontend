@@ -7,7 +7,7 @@ const HomeHero = () => {
         <h1 className="text-3xl md:text-4xl font-bold leading-tight">
           Toko Plastik & Kebutuhan Usaha Lengkap
         </h1>
-        <h2 className="mt-4 text-gray-600">
+        <h2 className="mt-4">
           Tersedia berbagai jenis plastik, rencengan, dan bahan makanan.
         </h2>
 

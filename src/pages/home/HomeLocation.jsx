@@ -8,7 +8,7 @@ const HomeLocation = () => {
         <h1 className="text-3xl md:text-4xl font-bold leading-tight">
           Lokasi Kami
         </h1>
-        <h2 className="mt-3 md:mt-4 text-gray-600">Toko Teguh Jaya</h2>
+        <h2 className="mt-3 md:mt-4">Toko Teguh Jaya</h2>
         <h2 className="mt-3">
           Kunjungi Toko Teguh Jaya secara langsung untuk membeli berbagai
           kebutuhan Anda dengan mudah dan praktis.

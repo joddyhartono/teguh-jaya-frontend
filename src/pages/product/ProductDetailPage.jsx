@@ -25,11 +25,11 @@ const ProductDetailPage = () => {
         />
       </div>
       <div className="max-w-lg text-center md:text-left">
-        <h1 className="text-3xl md:text-4xl font-bold leading-tight text-gray-600">
+        <h1 className="text-3xl md:text-4xl font-bold leading-tight">
           {product?.name}
         </h1>
         <h2 className="mt-4 text-lg font-semibold">Rp {product?.price}</h2>
-        <h3 className="mt-4 text-gray-500">{product?.description}</h3>
+        <h3 className="mt-4">{product?.description}</h3>
         <div className="mt-6 flex flex-col md:flex-row items-center justify-center md:justify-start gap-3 md:gap-6">
           <MarketplaceButton
             link="https://shopee.co.id"
