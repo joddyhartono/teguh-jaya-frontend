@@ -3,11 +3,21 @@ import { CATEGORIES_ENDPOINTS } from "../api/endpoints";
 import { getToken } from "../utils/auth";
 
 const getCategories = async () => {
-  const token = getToken();
-  setAuthHeader(token);
-
   const response = await instance.get(CATEGORIES_ENDPOINTS.CATEGORIES);
   return response.data;
 };
 
-export { getCategories };
+const createCategory = async (formData) => {
+  const response = await instance.post(
+    CATEGORIES_ENDPOINTS.CATEGORIES,
+    formData,
+  );
+  return response.data;
+};
+
+const deleteCategory = async (id) => {
+  const response = await instance.patch(CATEGORIES_ENDPOINTS.CATEGORY(id));
+  return true;
+};
+
+export { getCategories, createCategory, deleteCategory };
