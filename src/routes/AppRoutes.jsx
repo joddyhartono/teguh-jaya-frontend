@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router";
-import Layout from "../layout/Layout";
+import PublicLayout from "../layout/PublicLayout";
 import HomePage from "../pages/home/HomePage";
 import CategoryPage from "../pages/category/CategoryPage";
 import ProductPage from "../pages/product/ProductPage";
@@ -8,11 +8,13 @@ import LoginPage from "../pages/admin/LoginPage";
 import PrivateRoute from "./PrivateRoute";
 import DashboardPage from "../pages/admin/DashboardPage";
 import PublicRoute from "./PublicRoute";
+import PrivateLayout from "../layout/PrivateLayout";
+import CreateCategoryPage from "../pages/admin/CreateCategoryPage";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route element={<Layout />}>
+      <Route element={<PublicLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/categories" element={<CategoryPage />} />
         <Route
@@ -30,14 +32,32 @@ const AppRoutes = () => {
           </PublicRoute>
         }
       />
-      <Route
-        path="/admin/dashboard"
-        element={
-          <PrivateRoute>
-            <DashboardPage />
-          </PrivateRoute>
-        }
-      />
+      <Route element={<PrivateLayout />}>
+        <Route
+          path="/admin/dashboard"
+          element={
+            <PrivateRoute>
+              <DashboardPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/categories"
+          element={
+            <PrivateRoute>
+              <CategoryPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/categories/create"
+          element={
+            <PrivateRoute>
+              <CreateCategoryPage />
+            </PrivateRoute>
+          }
+        />
+      </Route>
     </Routes>
   );
 };
