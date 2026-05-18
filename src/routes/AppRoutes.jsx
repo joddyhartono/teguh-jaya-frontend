@@ -10,6 +10,7 @@ import DashboardPage from "../pages/admin/DashboardPage";
 import PublicRoute from "./PublicRoute";
 import PrivateLayout from "../layout/PrivateLayout";
 import CreateCategoryPage from "../pages/admin/CreateCategoryPage";
+import UpdateCategoryPage from "../pages/admin/UpdateCategoryPage";
 
 const AppRoutes = () => {
   return (
@@ -54,6 +55,14 @@ const AppRoutes = () => {
           element={
             <PrivateRoute>
               <CreateCategoryPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/categories/:categoryId/update"
+          element={
+            <PrivateRoute>
+              <UpdateCategoryPage />
             </PrivateRoute>
           }
         />

@@ -7,6 +7,13 @@ const getCategories = async () => {
   return response.data;
 };
 
+const getCategory = async (categoryId) => {
+  const response = await instance.get(
+    CATEGORIES_ENDPOINTS.CATEGORY(categoryId),
+  );
+  return response.data;
+};
+
 const createCategory = async (formData) => {
   const response = await instance.post(
     CATEGORIES_ENDPOINTS.CATEGORIES,
@@ -15,9 +22,25 @@ const createCategory = async (formData) => {
   return response.data;
 };
 
-const deleteCategory = async (id) => {
-  const response = await instance.patch(CATEGORIES_ENDPOINTS.CATEGORY(id));
+const updateCategory = async (categoryId, formData) => {
+  const response = await instance.patch(
+    CATEGORIES_ENDPOINTS.CATEGORY(categoryId),
+    formData,
+  );
   return true;
 };
 
-export { getCategories, createCategory, deleteCategory };
+const deleteCategory = async (id) => {
+  const response = await instance.patch(
+    CATEGORIES_ENDPOINTS.CATEGORY_DELETE(id),
+  );
+  return true;
+};
+
+export {
+  getCategories,
+  getCategory,
+  createCategory,
+  updateCategory,
+  deleteCategory,
+};

@@ -42,7 +42,6 @@ const CategoryPage = () => {
       {categories && (
         <div className="mt-3 md:mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
           {categories.map((category) => {
-            console.log(category);
             return (
               <ItemCard
                 key={category.id}
@@ -53,6 +52,7 @@ const CategoryPage = () => {
                 onDelete={() => {
                   handleDeleteCategory(category.id);
                 }}
+                updateLink={`/admin/categories/${category.id}/update`}
               />
             );
           })}

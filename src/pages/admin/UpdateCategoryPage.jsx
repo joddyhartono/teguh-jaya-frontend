@@ -1,18 +1,31 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import Label from "../../components/label/Label";
 import Input from "../../components/input/Input";
 import Button from "../../components/buttons/Button";
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import useCategory from "../../hooks/useCategory";
 import useCategoryForm from "../../hooks/useCategoryForm";
 
-const CreateCategoryPage = () => {
-  const { addCategory } = useCategoryForm();
+const UpdateCategoryPage = () => {
+  const { editCategory } = useCategoryForm();
+  const { categoryId } = useParams();
+  const { category } = useCategory(categoryId);
   const [formData, setFormData] = useState({
     name: "",
     imageBase64: "",
     description: "",
   });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (category) {
+      setFormData({
+        name: category.name,
+        imageBase64: category.imageBase64,
+        description: category.description,
+      });
+    }
+  }, [category]);
 
   const handleChange = (event) => {
     if (event.target.type === "file") {
@@ -32,7 +45,7 @@ const CreateCategoryPage = () => {
     event.preventDefault();
 
     try {
-      const data = await addCategory(formData);
+      const data = await editCategory(categoryId, formData);
       if (data) {
         navigate("/admin/categories");
       }
@@ -45,7 +58,7 @@ const CreateCategoryPage = () => {
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-sm p-6 border rounded">
         <h1 className="text-2xl md:text-3xl text-center font-bold leading-tight">
-          Create Category
+          Update Category
         </h1>
         <form className="flex flex-col gap-6 mt-8" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-3">
@@ -55,6 +68,7 @@ const CreateCategoryPage = () => {
               name="name"
               placeholder="Nama Kategori"
               onChange={handleChange}
+              value={formData.name}
             />
           </div>
 
@@ -75,6 +89,7 @@ const CreateCategoryPage = () => {
               name="description"
               placeholder="Deskripsi Kategori"
               onChange={handleChange}
+              value={formData.description}
             />
           </div>
 
@@ -83,7 +98,7 @@ const CreateCategoryPage = () => {
             className="w-full bg-green-500 text-white"
             onSubmit={handleSubmit}
           >
-            Create
+            Update
           </Button>
         </form>
       </div>
@@ -91,4 +106,4 @@ const CreateCategoryPage = () => {
   );
 };
 
-export default CreateCategoryPage;
+export default UpdateCategoryPage;
