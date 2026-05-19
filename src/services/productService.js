@@ -14,4 +14,9 @@ const getProduct = async (productId) => {
   return response.data;
 };
 
-export { getProductsByCategory, getProduct };
+const createProduct = async (formData) => {
+  const response = await instance.post(PRODUCTS_ENDPOINTS.PRODUCTS, formData);
+  return response.data;
+};
+
+export { getProductsByCategory, getProduct, createProduct };

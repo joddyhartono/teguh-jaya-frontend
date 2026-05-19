@@ -15,6 +15,7 @@ const PRODUCTS_ENDPOINTS = {
   PRODUCT: (productId) => {
     return `/products/${productId}`;
   },
+  PRODUCTS: "/products",
 };
 
 const AUTH_ENDPOINTS = {

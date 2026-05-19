@@ -45,7 +45,11 @@ const CategoryPage = () => {
             return (
               <ItemCard
                 key={category.id}
-                link={`/categories/${category.id}/products`}
+                link={
+                  isLoggedIn
+                    ? `/admin/categories/${category.id}/products`
+                    : `/categories/${category.id}/products`
+                }
                 image={`data:image/*;base64,${category.imageBase64}`}
                 title={category.name}
                 isLoggedIn={isLoggedIn}

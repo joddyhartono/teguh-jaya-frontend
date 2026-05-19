@@ -5,6 +5,7 @@ import ItemCard from "../../components/cards/ItemCard";
 import drink from "../../assets/drink.png";
 import { getUser } from "../../utils/auth";
 import Button from "../../components/buttons/Button";
+import { Link } from "react-router";
 
 const ProductPage = () => {
   const { items } = useSelector((state) => {
@@ -25,7 +26,12 @@ const ProductPage = () => {
         </h1>
 
         {isLoggedIn && (
-          <Button className="bg-green-500 text-white">Create</Button>
+          <Link
+            className="bg-green-500 text-white px-3 md:px-4 py-2 text-sm md:text-base rounded cursor-pointer"
+            to={`/admin/categories/${categoryId}/products/create`}
+          >
+            Create
+          </Link>
         )}
       </div>
 
