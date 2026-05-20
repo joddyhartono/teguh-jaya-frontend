@@ -1,7 +1,6 @@
 import { useParams } from "react-router";
 import useProductDetail from "../../hooks/useProductDetail";
 import { useNavigate } from "react-router";
-import drink from "../../assets/drink.png";
 import MarketplaceButton from "../../components/buttons/MarketplaceButton";
 import { ArrowLeft } from "lucide-react";
 
@@ -19,7 +18,7 @@ const ProductDetailPage = () => {
       </button>
       <div className="w-full md:w-1/2 flex justify-center">
         <img
-          src={drink}
+          src={`data:image/*;base64,${product?.imageBase64}`}
           alt={product?.name}
           className="w-full max-w-sm object-contain"
         />

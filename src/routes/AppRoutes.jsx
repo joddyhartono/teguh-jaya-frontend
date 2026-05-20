@@ -85,7 +85,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path="/admin/products/:productId/update"
+          path="/admin/categories/:categoryId/products/:productId/update"
           element={
             <PrivateRoute>
               <UpdateProductPage />

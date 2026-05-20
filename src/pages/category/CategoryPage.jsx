@@ -1,6 +1,5 @@
 import useCategoryList from "../../hooks/useCategoryList";
 import { getUser } from "../../utils/auth";
-import drink from "../../assets/drink.png";
 import ItemCard from "../../components/cards/ItemCard";
 import { Link } from "react-router";
 import useDeleteCategory from "../../hooks/useDeleteCategory";

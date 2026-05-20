@@ -2,7 +2,6 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import useProductList from "../../hooks/useProductList";
 import ItemCard from "../../components/cards/ItemCard";
-import drink from "../../assets/drink.png";
 import { getUser } from "../../utils/auth";
 import Button from "../../components/buttons/Button";
 import { Link } from "react-router";
@@ -51,17 +50,19 @@ const ProductPage = () => {
       {products && (
         <div className="mt-3 md:mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
           {products.map((product) => {
+            console.log(product);
             return (
               <ItemCard
                 key={product.id}
                 link={`/products/${product.id}`}
-                image={drink}
+                image={`data:image/*;base64,${product.imageBase64}`}
                 title={product.name}
                 price={product.price}
                 isLoggedIn={isLoggedIn}
                 onDelete={() => {
                   handleDeleteProduct(product.id);
                 }}
+                updateLink={`/admin/categories/${categoryId}/products/${product.id}/update`}
               />
             );
           })}

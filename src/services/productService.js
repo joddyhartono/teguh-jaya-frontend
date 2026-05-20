@@ -22,6 +22,17 @@ const createProduct = async (formData) => {
   return response.data;
 };
 
+const updateProduct = async (productId, formData) => {
+  const token = getToken();
+  setAuthHeader(token);
+
+  const response = await instance.patch(
+    PRODUCTS_ENDPOINTS.PRODUCT(productId),
+    formData,
+  );
+  return true;
+};
+
 const deleteProduct = async (productId) => {
   const token = getToken();
   setAuthHeader(token);
@@ -32,4 +43,10 @@ const deleteProduct = async (productId) => {
   return true;
 };
 
-export { getProductsByCategory, getProduct, createProduct, deleteProduct };
+export {
+  getProductsByCategory,
+  getProduct,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+};
