@@ -16,6 +16,9 @@ const PRODUCTS_ENDPOINTS = {
     return `/products/${productId}`;
   },
   PRODUCTS: "/products",
+  PRODUCT_DELETE: (productId) => {
+    return `/products/${productId}/delete`;
+  },
 };
 
 const AUTH_ENDPOINTS = {

@@ -15,8 +15,21 @@ const getProduct = async (productId) => {
 };
 
 const createProduct = async (formData) => {
+  const token = getToken();
+  setAuthHeader(token);
+
   const response = await instance.post(PRODUCTS_ENDPOINTS.PRODUCTS, formData);
   return response.data;
 };
 
-export { getProductsByCategory, getProduct, createProduct };
+const deleteProduct = async (productId) => {
+  const token = getToken();
+  setAuthHeader(token);
+
+  const response = await instance.patch(
+    PRODUCTS_ENDPOINTS.PRODUCT_DELETE(productId),
+  );
+  return true;
+};
+
+export { getProductsByCategory, getProduct, createProduct, deleteProduct };

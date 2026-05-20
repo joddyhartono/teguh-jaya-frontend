@@ -15,6 +15,9 @@ const getCategory = async (categoryId) => {
 };
 
 const createCategory = async (formData) => {
+  const token = getToken();
+  setAuthHeader(token);
+
   const response = await instance.post(
     CATEGORIES_ENDPOINTS.CATEGORIES,
     formData,
@@ -23,6 +26,9 @@ const createCategory = async (formData) => {
 };
 
 const updateCategory = async (categoryId, formData) => {
+  const token = getToken();
+  setAuthHeader(token);
+
   const response = await instance.patch(
     CATEGORIES_ENDPOINTS.CATEGORY(categoryId),
     formData,
@@ -31,6 +37,9 @@ const updateCategory = async (categoryId, formData) => {
 };
 
 const deleteCategory = async (id) => {
+  const token = getToken();
+  setAuthHeader(token);
+
   const response = await instance.patch(
     CATEGORIES_ENDPOINTS.CATEGORY_DELETE(id),
   );

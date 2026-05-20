@@ -6,6 +6,7 @@ import drink from "../../assets/drink.png";
 import { getUser } from "../../utils/auth";
 import Button from "../../components/buttons/Button";
 import { Link } from "react-router";
+import useDeleteProduct from "../../hooks/useDeleteProduct";
 
 const ProductPage = () => {
   const { items } = useSelector((state) => {
@@ -13,10 +14,22 @@ const ProductPage = () => {
   });
   const { categoryId } = useParams();
   const category = items.find((item) => item.id === Number(categoryId));
-  const { products } = useProductList(categoryId);
+  const { removeProduct } = useDeleteProduct();
+  const { products, fetchProducts } = useProductList(categoryId);
 
   const user = getUser();
   const isLoggedIn = Boolean(user);
+
+  const handleDeleteProduct = async (id) => {
+    try {
+      const data = await removeProduct(id);
+      if (data) {
+        fetchProducts();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 md:px-6 py-12 md:py-20">
@@ -46,6 +59,9 @@ const ProductPage = () => {
                 title={product.name}
                 price={product.price}
                 isLoggedIn={isLoggedIn}
+                onDelete={() => {
+                  handleDeleteProduct(product.id);
+                }}
               />
             );
           })}
