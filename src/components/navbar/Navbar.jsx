@@ -53,9 +53,6 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <button className="p-2 cursor-pointer">
-            <Search size={20} />
-          </button>
         </div>
       </div>
     </div>
