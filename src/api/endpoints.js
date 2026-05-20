@@ -3,6 +3,9 @@ const CATEGORIES_ENDPOINTS = {
   CATEGORY: (categoryId) => {
     return `/categories/${categoryId}`;
   },
+  CATEGORY_DELETE: (categoryId) => {
+    return `/categories/${categoryId}/delete`;
+  },
 };
 
 const PRODUCTS_ENDPOINTS = {
@@ -11,6 +14,10 @@ const PRODUCTS_ENDPOINTS = {
   },
   PRODUCT: (productId) => {
     return `/products/${productId}`;
+  },
+  PRODUCTS: "/products",
+  PRODUCT_DELETE: (productId) => {
+    return `/products/${productId}/delete`;
   },
 };
 

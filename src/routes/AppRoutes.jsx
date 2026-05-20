@@ -10,6 +10,9 @@ import DashboardPage from "../pages/admin/DashboardPage";
 import PublicRoute from "./PublicRoute";
 import PrivateLayout from "../layout/PrivateLayout";
 import CreateCategoryPage from "../pages/admin/CreateCategoryPage";
+import UpdateCategoryPage from "../pages/admin/UpdateCategoryPage";
+import CreateProductPage from "../pages/admin/CreateProductPage";
+import UpdateProductPage from "../pages/admin/UpdateProductPage";
 
 const AppRoutes = () => {
   return (
@@ -54,6 +57,38 @@ const AppRoutes = () => {
           element={
             <PrivateRoute>
               <CreateCategoryPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/categories/:categoryId/update"
+          element={
+            <PrivateRoute>
+              <UpdateCategoryPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/categories/:categoryId/products"
+          element={
+            <PrivateRoute>
+              <ProductPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/categories/:categoryId/products/create"
+          element={
+            <PrivateRoute>
+              <CreateProductPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/categories/:categoryId/products/:productId/update"
+          element={
+            <PrivateRoute>
+              <UpdateProductPage />
             </PrivateRoute>
           }
         />

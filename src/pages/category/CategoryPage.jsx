@@ -1,6 +1,5 @@
 import useCategoryList from "../../hooks/useCategoryList";
 import { getUser } from "../../utils/auth";
-import drink from "../../assets/drink.png";
 import ItemCard from "../../components/cards/ItemCard";
 import { Link } from "react-router";
 import useDeleteCategory from "../../hooks/useDeleteCategory";
@@ -42,17 +41,21 @@ const CategoryPage = () => {
       {categories && (
         <div className="mt-3 md:mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
           {categories.map((category) => {
-            console.log(category);
             return (
               <ItemCard
                 key={category.id}
-                link={`/categories/${category.id}/products`}
+                link={
+                  isLoggedIn
+                    ? `/admin/categories/${category.id}/products`
+                    : `/categories/${category.id}/products`
+                }
                 image={`data:image/*;base64,${category.imageBase64}`}
                 title={category.name}
                 isLoggedIn={isLoggedIn}
                 onDelete={() => {
                   handleDeleteCategory(category.id);
                 }}
+                updateLink={`/admin/categories/${category.id}/update`}
               />
             );
           })}

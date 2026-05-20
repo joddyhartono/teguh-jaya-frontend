@@ -1,6 +1,5 @@
 import useCategoryList from "../../hooks/useCategoryList";
 import { useState } from "react";
-import drink from "../../assets/drink.png";
 
 const HomeCategories = () => {
   const { categories } = useCategoryList();
@@ -36,7 +35,7 @@ const HomeCategories = () => {
             {category && (
               <>
                 <img
-                  src={drink}
+                  src={`data:image/*;base64,${category.imageBase64}`}
                   alt={category.name}
                   className="w-full h-28 md:h-32 object-contain mb-3"
                 />

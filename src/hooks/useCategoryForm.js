@@ -1,4 +1,4 @@
-import { createCategory } from "../services/categoryService";
+import { createCategory, updateCategory } from "../services/categoryService";
 
 const useCategoryForm = () => {
   const addCategory = async (formData) => {
@@ -10,7 +10,16 @@ const useCategoryForm = () => {
     }
   };
 
-  return { addCategory };
+  const editCategory = async (categoryId, formData) => {
+    try {
+      const data = await updateCategory(categoryId, formData);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { addCategory, editCategory };
 };
 
 export default useCategoryForm;
